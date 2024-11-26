@@ -15,3 +15,42 @@ Blogging is more than just words. It's about presentation, creativity, and leavi
 
 ## Getting Started
 1. Clone the repository
+
+## Django Project Code Convention
+This document provides coding guidelines to maintain consistency and readbility across Django projects.
+
+## 1. File and Directory Structure
+- Use lowercase sigular names for app directories. ex) 'loginmanager', 'blog'
+- Maintain the follwing directory structure for each app.
+
+## 2. Follow the PEP 8 Style guide for Python code
+- Indentation : Use 4 spaces per indentation level.
+- Line length : Limit lines to 79 characters.
+- Use 2 blank lines between top-level functions and classes.
+- Use 1 blank line between method inside a class.
+
+## 3. Models
+3.1 Model Class
+- Use PascalCase for model class names.
+- Use lowercase_snake_case for field anmes.
+
+3.2 Field Options
+- Be explicit when defining field options, such as nuull, blank, and default.
+
+4. Views
+4.1 Function-Based Views (FBVs)
+- Use lowercase_snake_case for function names.
+- Separate complex logic into helper functions or classes for better readability.
+
+4.2 Class-Based Views (CBVs)
+- Use PascalCase for class names.
+- Implement HTTP methods (get, post, etc.) as class methods.
+
+5. URLs
+- Use lowercae and hyphen-separdted patterns for URLs.
+- Define app_name to avoide conflicts and use name for reverse URL lookups.
+
+6. Templates
+- Store templates in an app-specific directory under templates/
+- Use lowercase and hyphen-separted names for templates.
+
