@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "vv_core.apps.VvCoreConfig",
+    "loginmanager",
 ]
 
 MIDDLEWARE = [
@@ -99,6 +99,10 @@ AUTH_PASSWORD_VALIDATORS = [
         "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
     },
 ]
+
+# settings.py
+AUTH_USER_MODEL = 'loginmanager.CustomUser'
+
 
 
 # Internationalization
