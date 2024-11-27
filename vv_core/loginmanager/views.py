@@ -19,11 +19,13 @@ def logout_view(request):
 
 def register_view(request):
     if request.method == 'POST':
+        print('post')
         form = UserCreationForm(request.POST)
         if form.is_valid():
             user = form.save()
-            login(request, user)
+            # login(request, user)
             return redirect('home')
     else:
+        print('here')
         form = UserCreationForm()
     return render(request, 'register.html', {'form': form})

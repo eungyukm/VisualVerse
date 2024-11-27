@@ -37,7 +37,8 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "loginmanager",
+    "loginmanager.apps.LoginmanagerConfig",
+    "postmanager.apps.PostmanagerConfig",
 ]
 
 MIDDLEWARE = [
