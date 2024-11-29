@@ -12,7 +12,7 @@ urlpatterns = [
 
     path('archive/', views.PostAV.as_view(), name='post_archive'),
 
-    path('post_list/', views.post_list, name='post_list'),
+    path('post_main/', views.post_main, name='post_main'),
     path('post_write/', views.post_write, name='post_write'),
     path('post_write_result/', views.post_write_result, name='post_write_result'),
 ]

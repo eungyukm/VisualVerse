@@ -18,13 +18,7 @@ class PostAV(ArchiveIndexView):
 
 
 # function based view
-from django.core.paginator import Paginator
-from django.shortcuts import get_object_or_404
-from django.http import HttpResponse
-from django.template import loader
-from .models import Post
-
-def post_list(request):
+def post_main(request):
     slug = request.GET.get('slug', None)
     page = request.GET.get('page', 1)
 
