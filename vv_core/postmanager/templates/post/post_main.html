@@ -46,7 +46,7 @@
     <div class="sidebar">
         <h4>Pages</h4>
         {% for post in page_obj %}
-            <a href="/post/post_list?slug={{ post.slug }}">{{ post.title }}</a>
+            <a href="/post/post_main?slug={{ post.slug }}">{{ post.title }}</a>
         {% endfor %}
     </div>
 

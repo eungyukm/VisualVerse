@@ -75,7 +75,7 @@ def post_write_result(request):
     message = f'''
     <script>
     alert('글이 성공적으로 작성되었습니다.');
-    location.href = '/post/post_list'
+    location.href = '/post/post_main'
     </script>
 '''
     return HttpResponse(message)
