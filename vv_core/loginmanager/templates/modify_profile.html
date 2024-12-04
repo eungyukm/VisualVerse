@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Page</title>
+    <title>Modify Profile</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <style>
         body {
@@ -15,15 +15,15 @@
             margin: 0;
             font-family: Arial, sans-serif;
         }
-        .login-card {
+        .edit-card {
             width: 100%;
-            max-width: 400px;
+            max-width: 500px;
             padding: 20px;
             background: #ffffff;
             border-radius: 10px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
-        .login-header {
+        .edit-header {
             font-size: 1.5rem;
             font-weight: bold;
             text-align: center;
@@ -32,43 +32,45 @@
         .form-control {
             border-radius: 5px;
         }
-        .btn-login {
+        .btn-save {
             width: 100%;
             border-radius: 5px;
         }
-        .signup-link {
+        .back-link {
             text-align: center;
             margin-top: 10px;
         }
-        .signup-link a {
+        .back-link a {
             text-decoration: none;
             color: #007bff;
         }
-        .signup-link a:hover {
+        .back-link a:hover {
             text-decoration: underline;
         }
     </style>
 </head>
 <body>
-    <div class="login-card">
-        <div class="login-header">Sign In</div>
-        <form action="/auth/login_result/" method="post">
+    <div class="edit-card">
+        <div class="edit-header">Edit Profile</div>
+        <form action="/auth/modify_profile_result/" method="post">
             {% csrf_token %}
             <div class="mb-3">
-                <label for="email" class="form-label">Email Address</label>
-                <input type="email" id="email" name="email" class="form-control" placeholder="Enter your email" required>
+                <label for="username" class="form-label">Username</label>
+                <input type="text" id="username" name="username" class="form-control" value="{{ user.username }}" required>
             </div>
             <div class="mb-3">
-                <label for="password" class="form-label">Password</label>
-                <input type="password" id="password" name="password" class="form-control" placeholder="Enter your password" required>
+                <label for="email" class="form-label">Email Address</label>
+                <input type="email" id="email" name="email" class="form-control" value="{{ user.email }}" required>
             </div>
-            <div class="mb-3 form-check">
-                <input type="checkbox" id="rememberMe" class="form-check-input">
-                <label for="rememberMe" class="form-check-label">Remember me</label>
+            <div class="mb-3">
+                <label for="password" class="form-label">New Password</label>
+                <input type="password" id="password" name="password" class="form-control" placeholder="Enter a new password">
+                <small class="form-text text-muted">Leave blank if you don't want to change the password.</small>
             </div>
-            <button type="submit" class="btn btn-primary btn-login">Login</button>
+            <button type="submit" class="btn btn-success btn-save">Save Changes</button>
         </form>
-        <div class="signup-link">Don't have an account? <a href="/auth/signup">Sign Up</a>
+        <div class="back-link">
+            <a href="/">Back to Home</a>
         </div>
     </div>
 </body>
