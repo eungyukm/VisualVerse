@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -26,7 +27,6 @@ SECRET_KEY = "django-insecure-fri#&7gp@tz+3!_ijyw5z9qe-p2#ha00_4vxr+8p*t01nz^8#q
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
 
 # Application definition
 
@@ -50,6 +50,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "vv_core.middleware.TopMenuMiddleWare.TopMenuMiddleware",
 ]
 
 ROOT_URLCONF = "vv_core.urls"
@@ -57,7 +58,7 @@ ROOT_URLCONF = "vv_core.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        "DIRS": [os.path.join(BASE_DIR, 'vv_core', 'templates')],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [

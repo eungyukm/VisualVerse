@@ -1,0 +1,45 @@
+<nav class="navbar navbar-expand-md bg-dark navbar-dark fixed-top shadow-lg">
+    <div class="container">
+        <!-- 로고 -->
+        <a class="navbar-brand" href="/">Visual Verse</a>
+
+        <!-- 토글 버튼 -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navMenu">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- 메뉴 -->
+        <div class="collapse navbar-collapse" id="navMenu">
+            <!-- 왼쪽 메뉴 리스트 -->
+            <ul class="navbar-nav me-auto">
+                {% for menu in request.menu_list %}
+                <li class="nav-item">
+                    <a href="/board/board_main?board_info_idx={{menu.board_info_idx}}" class="nav-link">
+                        {{menu.board_info_name}}
+                    </a>
+                </li>
+                {% endfor %}
+            </ul>
+
+            <!-- 오른쪽 세션 기반 메뉴 -->
+            <ul class="navbar-nav ms-auto">
+                {% if request.session.login_chk == True %}
+                <li class="nav-item">
+                    <a href="/auth/modify_user" class="nav-link">정보수정</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/auth/logout" class="nav-link">로그아웃</a>
+                </li>
+                {% else %}
+                <li class="nav-item">
+                    <a href="/auth/login" class="nav-link">로그인</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/auth/signup" class="nav-link">회원가입</a>
+                </li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</nav>
