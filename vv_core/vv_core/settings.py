@@ -51,7 +51,7 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "vv_core.middleware.TopMenuMiddleWare.TopMenuMiddleware",
-    "vv_core.middleware.LoginCheckMiddleware.LoginCheckMiddleware",
+    # "vv_core.middleware.LoginCheckMiddleware.LoginCheckMiddleware",
 ]
 
 ROOT_URLCONF = "vv_core.urls"
