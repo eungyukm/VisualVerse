@@ -39,3 +39,17 @@ class Post(models.Model):
                 num += 1
             self.slug = unique_slug
         super().save(*args, **kwargs)
+
+class Image(models.Model):
+    post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='images')
+    image = models.ImageField(upload_to='images/%Y/%m/%d/')
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        verbose_name = 'Image'
+        verbose_name_plural = 'Images'
+        db_table = 'post_images'
+        ordering = ('-created_at',)
+
+    def __str__(self):
+        return f"Image for Post: {self.post.title} ({self.id})"
