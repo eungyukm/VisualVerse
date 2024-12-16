@@ -25,15 +25,21 @@
             border-radius: 5px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             overflow: hidden;
-            max-width: 512px;
+            max-width: 256px;
         }
         .post-card img {
             width: 100%;
-            height: 512px;
+            height: 256px;
             object-fit: cover;
         }
         .card-body {
             text-align: center;
+        }
+        .empty-message {
+            text-align: center;
+            margin-top: 50px;
+            font-size: 1.5rem;
+            color: #666;
         }
     </style>
 </head>
@@ -65,17 +71,23 @@
 <!-- Main Content -->
 <div class="container mt-4">
     <div class="row g-3">
-        {% for post in post_cards %}
-        <div class="col-md-4 col-sm-6 col-lg-3 d-flex justify-content-center">
-            <div class="post-card card">
-                <img src="{{ post.image_url }}" class="card-img-top" alt="{{ post.title }}">
-                <div class="card-body">
-                    <h5 class="card-title">{{ post.title }}</h5>
-{#                    <a href="{% url 'post:post_detail' post.slug %}" class="btn btn-primary btn-sm">View Post</a>#}
+        {% if post_cards %}
+            {% for post in post_cards %}
+            <div class="col-md-4 col-sm-6 col-lg-3 d-flex justify-content-center">
+                <div class="post-card card">
+                    <img src="{{ post.image_url }}" class="card-img-top" alt="{{ post.title }}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ post.title }}</h5>
+{#                        <a href="{% url 'post:post_detail' post.slug %}" class="btn btn-primary btn-sm">View Post</a>#}
+                    </div>
                 </div>
             </div>
-        </div>
-        {% endfor %}
+            {% endfor %}
+        {% else %}
+            <div class="empty-message">
+                No posts available at the moment.
+            </div>
+        {% endif %}
     </div>
 </div>
 
