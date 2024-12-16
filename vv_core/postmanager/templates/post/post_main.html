@@ -11,6 +11,9 @@
             margin: 0;
             font-family: Arial, sans-serif;
         }
+        .top-menu {
+            margin-bottom: 20px; /* Include margin below the top menu */
+        }
         .sidebar {
             height: 100vh;
             width: 250px;
@@ -42,39 +45,43 @@
     </style>
 </head>
 <body>
-    <!-- Sidebar -->
-    <div class="sidebar">
-        <h4>Pages</h4>
-        {% for post in page_obj %}
-            <a href="/post/post_main?slug={{ post.slug }}">{{ post.title }}</a>
-        {% endfor %}
-    </div>
+<div class="top-menu">
+    {% include 'top_menu.html' %}
+</div>
 
-    <!-- Main Content -->
-    <div class="main-content">
-        <div class="container">
-            <!-- 게시글 작성 섹션 -->
-            <div class="card shadow mb-4">
-                <div class="card-body">
-                    <form action="/post/post_write_result/" method="post" enctype="multipart/form-data">
-                        {% csrf_token %}
-                        <div class="form-group mb-3">
-                            <label for="post_subject"></label>
-                            <input type="text" id="post_subject" name="post_subject" class="form-control" value={{current_page_data.title}}>
-                        </div>
-                        <div class="form-group mb-4">
-                            <label for="post_content">Content</label>
-                            <textarea id="post_content" name="post_content" class="form-control" rows="15" style="resize:none">{{ current_page_data.content }}</textarea>
+<!-- Sidebar -->
+<div class="sidebar">
+    <h4>Pages</h4>
+    {% for post in page_obj %}
+        <a href="/post/post_main?slug={{ post.slug }}">{{ post.title }}</a>
+    {% endfor %}
+</div>
 
+<!-- Main Content -->
+<div class="main-content">
+    <div class="container">
+        <!-- 게시글 작성 섹션 -->
+        <div class="card shadow mb-4">
+            <div class="card-body">
+                <form action="/post/post_write_result/" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="form-group mb-3">
+                        <label for="post_subject"></label>
+                        <!-- value를 ""로 감싸줌 -->
+                        <input type="text" id="post_subject" name="post_subject" class="form-control" value="{{ current_page_data.title }}">
+                    </div>
 
-                        </div>
-                        <div class="form-group text-end">
-                            <button type="submit" class="btn btn-success">Submit</button>
-                        </div>
-                    </form>
-                </div>
+                    <div class="form-group mb-4">
+                        <label for="post_content">Content</label>
+                        <textarea id="post_content" name="post_content" class="form-control" rows="15" style="resize:none">{{ current_page_data.content }}</textarea>
+                    </div>
+                    <div class="form-group text-end">
+                        <button type="submit" class="btn btn-success">Submit</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
+</div>
 </body>
 </html>
