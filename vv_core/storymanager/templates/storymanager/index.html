@@ -78,7 +78,8 @@
                     <img src="{{ post.image_url }}" class="card-img-top" alt="{{ post.title }}">
                     <div class="card-body">
                         <h5 class="card-title">{{ post.title }}</h5>
-{#                        <a href="{% url 'post:post_detail' post.slug %}" class="btn btn-primary btn-sm">View Post</a>#}
+                        <!-- 상세 페이지로 이동하는 링크 -->
+                        <a href="/post/post_main/?slug={{ post.slug }}" class="btn btn-primary btn-sm">View Post</a>
                     </div>
                 </div>
             </div>
@@ -90,6 +91,7 @@
         {% endif %}
     </div>
 </div>
+
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
