@@ -25,6 +25,10 @@
             <!-- 오른쪽 세션 기반 메뉴 -->
             <ul class="navbar-nav ms-auto">
                 {% if request.session.login_chk == True %}
+                <!-- Post 작성하기 버튼 -->
+                <li class="nav-item">
+                    <a href="/post/post_main/" class="btn btn-success nav-link text-white">Post 작성하기</a>
+                </li>
                 <li class="nav-item">
                     <a href="/auth/modify_profile" class="nav-link">정보수정</a>
                 </li>

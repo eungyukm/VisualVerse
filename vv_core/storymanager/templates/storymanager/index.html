@@ -24,111 +24,61 @@
             border: 1px solid #ddd;
             border-radius: 5px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-        .post-card .card-header {
-            background-color: #f8f9fa;
-            font-weight: bold;
+            overflow: hidden;
+            max-width: 512px;
         }
         .post-card img {
             width: 100%;
-            border-radius: 0;
+            height: 512px;
+            object-fit: cover;
         }
-        .sidebar {
-            background-color: #ffffff;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            padding: 15px;
-            margin-bottom: 20px;
-        }
-        .sidebar h6 {
-            font-weight: bold;
-        }
-        .sidebar a {
-            text-decoration: none;
-            color: #007bff;
-        }
-        .sidebar a:hover {
-            text-decoration: underline;
+        .card-body {
+            text-align: center;
         }
     </style>
 </head>
 <body>
-
 {% include 'top_menu.html' %}
-
-    <!-- Navigation Bar -->
-    <nav class="navbar navbar-expand-lg navbar-light">
-        <div class="container">
-            <a class="navbar-brand" href="#">Visual Verse</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Contact</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-
-    <div class="container mt-4">
-        <div class="row">
-            <!-- Main Content -->
-            <div class="col-md-8">
-                <!-- Post Card -->
-                <div class="post-card card">
-                    <div class="card-header">user_01</div>
-                    <img src="https://via.placeholder.com/600x400" class="card-img-top" alt="Post Image">
-                    <div class="card-body">
-                        <h5 class="card-title">Post Title 1</h5>
-                        <p class="card-text">This is a brief description of the post content. It's short and to the point.</p>
-                        <a href="#" class="btn btn-primary">Read More</a>
-                    </div>
-                </div>
-                <!-- Post Card -->
-                <div class="post-card card">
-                    <div class="card-header">user_02</div>
-                    <img src="https://via.placeholder.com/600x400" class="card-img-top" alt="Post Image">
-                    <div class="card-body">
-                        <h5 class="card-title">Post Title 2</h5>
-                        <p class="card-text">Another brief description for a different post. Simple and engaging.</p>
-                        <a href="#" class="btn btn-primary">Read More</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Sidebar -->
-            <div class="col-md-4">
-                <div class="sidebar">
-                    <h6>Popular Tags</h6>
-                    <div>
-                        <a href="#">#programming</a><br>
-                        <a href="#">#webdev</a><br>
-                        <a href="#">#javascript</a>
-                    </div>
-                </div>
-                <div class="sidebar">
-                    <h6>Recommended Users</h6>
-                    <div>
-                        <a href="#">@user_03</a><br>
-                        <a href="#">@user_04</a><br>
-                        <a href="#">@user_05</a>
-                    </div>
-                </div>
-            </div>
+<!-- Navigation Bar -->
+<nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container">
+        <a class="navbar-brand" href="#">Visual Verse</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Contact</a>
+                </li>
+            </ul>
         </div>
     </div>
+</nav>
 
-{% include 'bottom_info.html' %}
+<!-- Main Content -->
+<div class="container mt-4">
+    <div class="row g-3">
+        {% for post in post_cards %}
+        <div class="col-md-4 col-sm-6 col-lg-3 d-flex justify-content-center">
+            <div class="post-card card">
+                <img src="{{ post.image_url }}" class="card-img-top" alt="{{ post.title }}">
+                <div class="card-body">
+                    <h5 class="card-title">{{ post.title }}</h5>
+{#                    <a href="{% url 'post:post_detail' post.slug %}" class="btn btn-primary btn-sm">View Post</a>#}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>
